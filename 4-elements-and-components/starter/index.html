@@ -6,6 +6,10 @@
   <title>Chapter 4 Practice Exercises</title>
   <script src="react.js"></script>
   <script src="react-dom.js"></script>
+<script
+     type="text/babel"
+     src="https://unpkg.com/@babel/standalone/babel.min.js"
+   ></script>
 </head>
 
 <body>
@@ -16,15 +20,35 @@
     // Create a variable called pEl
     // Use createElement to create a paragraph element with text "Hello React."
 
+let pEl =React.createElement("p",{},"Hello React.");
+
+
+
     // Practice #2
     // Create a variable called h1LinkEl
     // Use createElement to create an h1 element tag with a link inside of it
     // Make the link point to https://reactjs.org/ and include the text "React"
 
+    let h1LinkEl = React.createElement("h1",{},React.createElement("a",{href: 'https://reactjs.org/'},'React') );
+    
+
+
     // Practice #3
     // Create a component named "Header"
     // Have it return a header with an ID of "main" 
     // Include h1El and pEl inside of the header element
+
+    Header =()=>{
+
+return(
+
+  React.createElement("header",{id:"main"},pEl, h1LinkEl  )
+)
+
+
+    }
+
+
 
 
     // Practice #4
@@ -35,17 +59,40 @@
     // The second list item should be a link to the "ReactDOM Docs" overview "https://reactjs.org/docs/react-dom.html"
     // The third should be a link to a React related resource of your choice
 
+    List=()=> {
+      let l1= React.createElement("li",{},React.createElement("a",{href:"https://reactjs.org/docs"},"React Docs")   );
+       let l2= React.createElement("li",{},React.createElement("a",{href:"https://reactjs.org/docs/react-dom.html"},"ReactDOM Docs")   );
+       let l3=  React.createElement("li",{},React.createElement("a",{href:"https://reactjs.org/docs"},"React ")   );
+
+      return(
+     
+        React.createElement("ul",{className:"react-links", id: "top"},l1,l2,l3 )
+      )
+    }
+
 
     // Practice #5
     // Create a component named "App"
     // Have it return a Fragment with the Header and List components inside of it
 
+    App=()=>{
+
+      return(
+        React.createElement("div",{},List(),Header())
+
+      )
+    }
+
 
 
     ReactDOM.render(
-      // Place your element variable or component function call here to test
-      '',
+      // Place your element variable or component function call here to test'',
+  // Header(),
+  // List(),
+  App(),
       document.getElementById('root')
+   
+     
     );
 
   </script>

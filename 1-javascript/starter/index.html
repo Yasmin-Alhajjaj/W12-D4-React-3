@@ -7,7 +7,11 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">  </div>
+
+
+
+
   <script>
 
     // Practice 1 - const, let, freeze
@@ -16,7 +20,27 @@
     // Create a post object with an id and title that is frozen
     // Test whether you can reassign each of the variables
     // Log out each of the variables to the page
+const username = "yasmin" ;
+let loggedIn = "123" ;
 
+let post = {
+  id:"111",
+  title: "name" ,
+}
+
+var obj=Object.freeze(post);
+
+ post = {
+  id:"change",
+  title: "name" ,
+}
+
+obj.id = "change"
+
+console.log(username);
+console.log(loggedIn);
+console.log(post);
+console.log(obj.id);
 
 
     // Practice 2 - Template Literals
@@ -27,7 +51,7 @@
     const firstName = "";
     const lastName = ""
 
-    let message = ``;
+    let message = `Hi firstName lastName!`;
 
     console.log(message);
 
@@ -37,12 +61,19 @@
     // Name the arrow function ArrowName
     // Log the value of ArrowName passing in your name as a parameter
 
-    function MyName(name) {
+    // function MyName(name) {
+    //   return (
+    //     `<p>${name}<p>`
+    //   )
+    // }
+
+
+    ArrowName=(name)=> {
       return (
         `<p>${name}<p>`
       )
     }
-
+    console.log(ArrowName("yasmin"))
 
 
     // Practice 4 - .filter() and .map()
@@ -65,14 +96,19 @@
       }
     ];
 
+    const filteredPost =posts.filter(elem=>elem.title.includes("post") )
 
+console.log(filteredPost)
+
+console.log(filteredPost.map(elem=>elem.title))
 
     // Practice 5 - DOM Creation
     // Map over the postsArray
     // User document.createElement and document.createTextNode 
     //  to create an h2 with a link and the title of the post
     // Append each of the h2s to the postsContainer
-    const postsContainer = document.getElementById("root");
+    //const postsContainer = document.getElementById("root");
+
     const postsArray = [
       {
         id: 1,
@@ -91,8 +127,20 @@
       }
     ];
 
+const arr= postsArray.map(elem=>
+{
+  const creat = document.createElement ("h2");
+  const text =  document.createTextNode(elem.title);
+  
+  creat.appendChild(text);
+  document.getElementById("root").appendChild(creat);                              // 
 
+  return creat;
+}
+)
+ console.log(arr)
   </script>
 </body>
+
 
 </html>
